@@ -1,0 +1,26 @@
+﻿    @model ClassLibrary.Data.Article.ArticlsTag
+
+    @{
+        ViewData["Title"] = "Добавление тэга";
+    }
+
+    <h1>Добавление тэга</h1>
+
+    <h4>ArticlsTag</h4>
+
+        <form asp-action="CreateTag" asp-controller="home">
+            <div class="form-group">
+                <label asp-for="articlsID" class="control-label">Заголовки</label>
+                <select asp-for="articlsID" class="form-control" asp-items="ViewBag.ArticlsID"></select>
+            </div>
+                <div class="form-group">
+                    <label asp-for="tagID" class="control-label">Тэги</label>
+                    <select asp-for="tagID" class="form-control" asp-items="ViewBag.TagId"></select>
+                </div>
+                <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-default" />
+                </div>
+            </form>
+
+
+

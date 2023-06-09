@@ -1,0 +1,13 @@
+﻿@model IEnumerable<YungBloger.Models.Coment>
+
+<table class="table">
+    <tr><td>Пользователь</td><td>Текст</td><td>Дата публикации</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.NameUser</td>
+            <td>@item.Description</td>
+            <td>@item.DateAnswer</td>
+        </tr>
+    }
+</table>

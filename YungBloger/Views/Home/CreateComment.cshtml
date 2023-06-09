@@ -1,0 +1,13 @@
+﻿@model YungBloger.Models.Coment
+
+<form asp-action="CreateComment" asp-controller="home">
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Коментарий</label>
+        <input type="text" asp-for="Description" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Прокоментировать" class="btn btn-default" />
+    </div>
+</form>

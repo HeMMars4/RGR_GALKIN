@@ -1,0 +1,46 @@
+﻿
+@model IEnumerable<ClassLibrary.Data.Article.Articls>
+@{
+    ViewData["Title"] = $"Home Page {@User.Identity.Name}";
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+        <h2>Добро пожаловать @User.Identity.Name</h2>
+
+
+        <a asp-action="Create">Добавить статью</a>
+        <a asp-action="CreateTag" asp-controller="Home">Добавить теги</a>
+        <a asp-action="SearchArticl" asp-controller="Home">Поиск по тегу</a>
+
+        <table class="table">
+        <tr><td>Заголовок</td><td>Текст</td><td>Дата публикации</td></tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Heading</td>
+                    <td>@item.Description</td>
+                    <td>@item.DateOfPublication</td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">Подробнее</a> |
+                        <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Изменить</a> |
+                        <a asp-action="Delete" asp-controller="Home" asp-route-id="@item.Id">Удалить</a>
+                        <a asp-action="CreateComment" asp-controller="Home">Прокоментировать статью</a> |
+                        <a asp-action="SeeComent" asp-controller="Home">Посмотреть коментарии</a> |
+                    </td>
+
+                </tr>
+            }
+        </table>
+
+
+        <form method="post" asp-controller="Account" asp-action="Logout">
+            <input type="submit" value="Выход" />
+        </form>
+}
+else
+{
+        <a asp-controller="Account" asp-action="Login">Вход</a>
+        <a asp-controller="Account" asp-action="Register">Регистрация</a>
+}

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<ClassLibrary.Data.Article.Articls>
+@{
+    ViewData["Title"] = "Поиск по тегу";
+}
+
+
+<table class="table">
+    <tr><td>Заголовок</td><td>Текст</td><td>Дата публикации</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Heading</td>
+            <td>@item.Description</td>
+            <td>@item.DateOfPublication</td>
+
+            <td>
+                <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">Подробнее</a> |
+                <a asp-action="CreateComment" asp-controller="Home">Прокоментировать статью</a> |
+                <a asp-action="SeeComent" asp-controller="Home">Посмотреть коментарии</a> |
+            </td>
+        </tr>
+    }
+</table>
